@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+# coding: utf-8
 """
 This program allows you to list, sort, filter and classify SSH connection attempts in a Linux system.
 Author: KORKUT Caner (BE)
@@ -9,10 +9,6 @@ Don't forget to add IPs to /etc/hosts.deny: "sshd: XXX.XXX.XXX.XXX" to ban them.
 
 import os
 import json
-
-#On cree un fichier contenant les IP ayant rentre un mdp errone
-os.system('cat /var/log/auth.log | grep "Failed password" > parasites.txt')
-
 
 def log_manager(fname):
 	"""
@@ -39,14 +35,12 @@ def log_manager(fname):
 				last = l
 	return (parasites, first, last)
 
-
 def takeSecond(elem):
 	return elem[1]
 
-
-def show_top_10(): 
+def show_top_10(fname): 
 	ls = []
-	res = log_manager("parasites.txt")
+	res = log_manager(fname)
 	filtered_res = dict.fromkeys(set(res[0]),0) #sans doublons
 	for ip in filtered_res:
 		for elem in res[0]:
@@ -65,4 +59,6 @@ def show_top_10():
 		print('{}. {}: {}'.format(i+1, ls[len(ls)-i-1][0], ls[len(ls)-i-1][1]))
 
 if __name__ == "__main__":
-	show_top_10()
+        #On cree un fichier contenant les IP ayant rentre un mdp errone
+        os.system('cat /var/log/auth.log | grep "Failed password" > parasites.txt')
+	show_top_10("parasites.txt")
