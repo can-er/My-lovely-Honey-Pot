@@ -38,7 +38,7 @@ def log_manager(fname):
 def takeSecond(elem):
 	return elem[1]
 
-def count_occurence():
+def count_occurence(fname):
 	ls = []
 	res = log_manager(fname)
 	filtered_res = dict.fromkeys(set(res[0]),0) #sans doublons
@@ -62,8 +62,8 @@ def show_top_10(fname):
 	print("Il y a eu {} tentatives de connexions SSH entre {} et {}.".format(len((log_manager(fname)[0])), log_manager(fname)[1][0:15],log_manager(fname)[2][0:15]))
 	print("Top 10 parasites:")
 	for i in range(10):
-		#print('{}. {}: {}'.format(i+1, count_occurence()[len(count_occurence())-i-1][0], count_occurence()[len(count_occurence())-i-1][1]))
-		print('. {}: {}'.format( count_occurence()[len(count_occurence())-i-1][1]))
+		print('{}. {}: {}'.format(i+1, count_occurence()[len(count_occurence(fname))-i-1][0], count_occurence(fname)[len(count_occurence(fname))-i-1][1]))
+
 if __name__ == "__main__":
     #On cree un fichier contenant les IP ayant rentre un mdp errone
     os.system('cat /var/log/auth.log | grep "Failed password" > parasites.txt')
