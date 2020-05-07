@@ -47,7 +47,7 @@ def count_occurence(fname):
 		for elem in res[0]:
 			if ip == elem:
 				filtered_res[ip] +=1
-	
+	#On remplit une liste contenant des tuples sous la forme: [(IP,Attempts),(IP,Attempts),...]
 	for k, v in filtered_res.items():
 		ls.append((k,v))
 	ls.sort(key=takeSecond)
@@ -56,8 +56,6 @@ def count_occurence(fname):
 	return ls
 
 def show_top_10(fname): 
-	#On remplit une liste contenant des tuples sous la forme: [(IP,Attempts),(IP,Attempts),...]
-
 	#On affiche le resultat
 	print("Il y a eu {} tentatives de connexions SSH entre {} et {}.".format(len((log_manager(fname)[0])), log_manager(fname)[1][0:15],log_manager(fname)[2][0:15]))
 	print("Top 10 parasites:")
