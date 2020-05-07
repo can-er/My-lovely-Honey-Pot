@@ -52,6 +52,7 @@ def count_occurence():
 		ls.append((k,v))
 	ls.sort(key=takeSecond)
 	
+	
 	return ls
 
 def show_top_10(fname): 
@@ -66,4 +67,4 @@ def show_top_10(fname):
 if __name__ == "__main__":
     #On cree un fichier contenant les IP ayant rentre un mdp errone
     os.system('cat /var/log/auth.log | grep "Failed password" > parasites.txt')
-	show_top_10("parasites.txt")
+    show_top_10("parasites.txt")
