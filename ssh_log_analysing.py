@@ -59,7 +59,7 @@ def show_top_10(fname):
 	#On remplit une liste contenant des tuples sous la forme: [(IP,Attempts),(IP,Attempts),...]
 
 	#On affiche le resultat
-	print("Il y a eu {} tentatives de connexions SSH entre {} et {}.".format((log_manager(fname)[0]), log_manager(fname)[1][0:15],log_manager(fname)[2][0:15]))
+	print("Il y a eu {} tentatives de connexions SSH entre {} et {}.".format(len((log_manager(fname)[0])), log_manager(fname)[1][0:15],log_manager(fname)[2][0:15]))
 	print("Top 10 parasites:")
 	for i in range(10):
 		print('{}. {}: {}'.format(i+1, count_occurence()[len(count_occurence())-i-1][0], count_occurence()[len(count_occurence())-i-1][1]))
