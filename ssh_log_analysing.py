@@ -52,7 +52,6 @@ def count_occurence(fname):
 		ls.append((k,v))
 	ls.sort(key=takeSecond)
 	
-	
 	return ls
 
 def show_top_10(fname): 
